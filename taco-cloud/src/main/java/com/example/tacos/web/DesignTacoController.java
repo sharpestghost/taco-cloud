@@ -1,6 +1,6 @@
 package com.example.tacos.web;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,13 +32,16 @@ public class DesignTacoController {
             IngredientRepository ingredientRepo) {
         this.ingredientRepo = ingredientRepo;
     }
+
     @ModelAttribute
     public void addIngredientsToModel(Model model) {
-        List<Ingredient> ingredients = ingredientRepo.findAll();
+        List<Ingredient> ingredientList = new ArrayList<>();
+        Iterable<Ingredient> iterator = ingredientRepo.findAll();
+        iterator.forEach(ingredientList::add);
         Type[] types = Ingredient.Type.values();
         for (Type type : types) {
             model.addAttribute(type.toString().toLowerCase(),
-                    filterByType(ingredients, type));
+                    filterByType(ingredientList, type));
         }
     }
 
