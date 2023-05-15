@@ -1,5 +1,6 @@
 package com.example.tacos;
 
+import com.example.tacos.data.IngredientRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,7 +19,7 @@ public class TacoCloudApplication implements WebMvcConfigurer {
 	public void addViewControllers(ViewControllerRegistry registry) {
 		registry.addViewController("/").setViewName("home");
 	}
-/*
+
 	@Bean
 	public CommandLineRunner dataLoader(IngredientRepository repo) {
 		return args -> {
@@ -35,6 +36,6 @@ public class TacoCloudApplication implements WebMvcConfigurer {
 		};
 	}
 
- */
+
 
 }
